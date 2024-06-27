@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import TaskHome from '../views/TaskHome/index.vue'
+import taskTop from '../views/taskTop.vue'
+import staffTop from '../views/staffTop.vue'
 
 
 const router = createRouter({
@@ -7,8 +8,13 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: TaskHome
+      name: 'taskTop',
+      component: taskTop
+    },
+    {
+      path: '/staff-top',
+      name: 'staffTop',
+      component: staffTop
     }
   ]
 })
