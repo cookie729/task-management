@@ -1,13 +1,14 @@
 <template>
   <div>
     <header>
-      <h1 class="header-title">タスク管理</h1>
-
-      <ul class="h-list">
-        <RouterLink to="/staff-top">
-          <li>職員追加</li>
-        </RouterLink>
-      </ul>
+      <div class="w95">
+        <h1 class="header-title">タスク管理</h1>
+        <ul class="h-list">
+          <RouterLink to="/staff-top">
+            <li>職員追加</li>
+          </RouterLink>
+        </ul>
+      </div>
     </header>
   </div>
 </template>
@@ -24,13 +25,21 @@ export default defineComponent({
 header {
   width: 100%;
   background: rgb(255, 180, 82);
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
+  .w95 {
+    width: 95%;
+    margin: 0 auto;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
   .header-title {
     color: white;
     font-size: 3rem;
-    padding: 10px
+    padding: {
+      top: 10px;
+      bottom: 10px;
+    }
   }
 }
 .h-list {
