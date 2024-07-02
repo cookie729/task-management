@@ -1,23 +1,9 @@
 <template>
   <div>
     <div class="flex">
-      <h1 class="content-title">職員一覧</h1>
-      <RouterLink to="/add-staff">
-        <button class="add">＋ 職員追加</button>
-      </RouterLink>
+      <h1 class="content-title">職員追加</h1>
     </div>
 
-    <table>
-      <tr>
-        <th v-for="(label, key) in tableHeader" :key="key">{{ label }}</th>
-      </tr>
-      <tr v-for="(staff, key) in staffList" :key="key">
-        <td>{{ staff.id }}</td>
-        <td>{{ staff.code }}</td>
-        <td>{{ staff.name }}</td>
-        <td>{{ staff.department }}</td>
-      </tr>
-    </table>
   </div>
 </template>
 
