@@ -5,7 +5,7 @@
         <h1 class="header-title">タスク管理</h1>
         <ul class="h-list">
           <RouterLink to="/staff-top">
-            <li>職員追加</li>
+            <li>職員一覧</li>
           </RouterLink>
         </ul>
       </div>

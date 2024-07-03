@@ -3,11 +3,11 @@
     <div class="flex">
       <h1 class="content-title">職員一覧</h1>
       <RouterLink to="/add-staff">
-        <button class="add">＋ 職員追加</button>
+        <PrimaryButton>＋ 職員追加</PrimaryButton>
       </RouterLink>
     </div>
 
-    <table>
+    <table class="styled-table">
       <tr>
         <th v-for="(label, key) in tableHeader" :key="key">{{ label }}</th>
       </tr>
@@ -23,6 +23,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import PrimaryButton from '../components/atoms/PrimaryButton.vue'
 
 interface Staff {
   id: number
@@ -77,30 +78,22 @@ const staffList = ref(staffData)
     bottom: 10px;
   }
 }
-.add {
-  font-size: 1.2rem;
-  background: rgb(175, 232, 255);
-  padding: 10px;
-  color: rgb(47, 47, 220);
-  border-radius: 10px;
-}
-.content-title {
-  font-size: 2rem;
-}
-.w80 {
-  width: 80%;
-}
-.w100 {
+
+.styled-table {
   width: 100%;
+  margin: 25px 0;
+  font-size: 1rem;
+  min-width: 400px;
 }
 
-.border {
-  border: solid 1px #c3c3c3;
+th,
+td {
+  border: solid 1px #dddddd;
+  text-align: center;
+  padding: 12px 15px;
 }
-.b-right {
-  border-right: solid 1px #c3c3c3;
-}
-.b-left {
-  border-left: solid 1px #c3c3c3;
+
+th {
+  background-color: #f3f3f3;
 }
 </style>
