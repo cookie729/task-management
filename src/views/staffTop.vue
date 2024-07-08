@@ -16,6 +16,9 @@
         <td>{{ staff.code }}</td>
         <td>{{ staff.name }}</td>
         <td>{{ staff.department }}</td>
+        操作
+        <PrimaryButton>編集</PrimaryButton>
+        <PrimaryButton>削除</PrimaryButton>
       </tr>
     </table>
   </div>
@@ -96,4 +99,5 @@ td {
 th {
   background-color: #f3f3f3;
 }
+
 </style>
