@@ -16,9 +16,10 @@
         <td>{{ staff.code }}</td>
         <td>{{ staff.name }}</td>
         <td>{{ staff.department }}</td>
-        操作
-        <PrimaryButton>編集</PrimaryButton>
-        <PrimaryButton>削除</PrimaryButton>
+        <td class="d-flex">
+          <PrimaryButton backgroundColor="#009766" color="rgb(255, 255, 255)"> 編集 </PrimaryButton>
+          <DangerButton>削除</DangerButton>
+        </td>
       </tr>
     </table>
   </div>
@@ -27,19 +28,22 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import PrimaryButton from '../components/atoms/PrimaryButton.vue'
+import DangerButton from '../components/atoms/DangerButton.vue'
 
 interface Staff {
   id: number
   name: string
   code: string
   department: string
+  control: string
 }
 
 const tableHeader = {
   id: '#',
   code: '職員番号',
   name: '名前',
-  department: '部署'
+  department: '部署',
+  control: ''
 }
 
 const staffData: Staff[] = [
@@ -47,25 +51,29 @@ const staffData: Staff[] = [
     id: 1,
     code: '001',
     name: 'test-name1',
-    department: '経理'
+    department: '経理',
+    control: ''
   },
   {
     id: 2,
     code: '002',
     name: 'test-name2',
-    department: '総務'
+    department: '総務',
+    control: ''
   },
   {
     id: 3,
     code: '003',
     name: 'test-name3',
-    department: '設計'
+    department: '設計',
+    control: ''
   },
   {
     id: 4,
     code: '004',
     name: 'test-name4',
-    department: '配送センター'
+    department: '配送センター',
+    control: ''
   }
 ]
 
@@ -80,6 +88,10 @@ const staffList = ref(staffData)
     top: 10px;
     bottom: 10px;
   }
+}
+.d-flex {
+  display: flex;
+  justify-content: space-around;
 }
 
 .styled-table {
@@ -99,5 +111,4 @@ td {
 th {
   background-color: #f3f3f3;
 }
-
 </style>
