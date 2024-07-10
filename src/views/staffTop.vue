@@ -17,11 +17,18 @@
         <td>{{ staff.name }}</td>
         <td>{{ staff.department }}</td>
         <td class="d-flex">
-          <PrimaryButton backgroundColor="#009766" color="rgb(255, 255, 255)"> 編集 </PrimaryButton>
-          <DangerButton>削除</DangerButton>
+          <primary-button
+            backgroundColor="#009766"
+            color="rgb(255, 255, 255)"
+            @click="openStaffEdit"
+          >
+            編集
+          </primary-button>
+          <danger-button>削除</danger-button>
         </td>
       </tr>
     </table>
+    <edit-modal :open="openStaffEditDialog"></edit-modal>
   </div>
 </template>
 
@@ -29,6 +36,13 @@
 import { ref } from 'vue'
 import PrimaryButton from '../components/atoms/PrimaryButton.vue'
 import DangerButton from '../components/atoms/DangerButton.vue'
+import EditModal from '../components/molecules/EditModal.vue'
+
+const openStaffEditDialog = ref(false)
+const openStaffEdit = () => {
+  openStaffEditDialog.value = true
+  console.log('確認', openStaffEditDialog.value)
+}
 
 interface Staff {
   id: number

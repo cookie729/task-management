@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="add" :style="{ backgroundColor: props.backgroundColor, color: props.color }">
+    <button class="add" :style="{ backgroundColor: backgroundColor, color: color }">
       <slot> </slot>
     </button>
   </div>
@@ -19,6 +19,9 @@ const props = defineProps({
     default: 'rgb(47, 47, 220)'
   }
 })
+
+const backgroundColor = props.backgroundColor
+const color = props.color
 </script>
 
 <style scoped>
