@@ -1,6 +1,7 @@
 <template>
   <div class="modal-wrap" v-if="open">
     <div class="modal-content">
+      <p class="close-icon">✖️</p>
       <form class="form-content" action="#">
         <div class="category-item">
           <label class="label-text">職員名</label>
@@ -38,6 +39,7 @@ const props = defineProps({
   }
 })
 const openStaffEditDialog = ref(false)
+const closeStaffEditDialog = ref(false)
 </script>
 
 <style lang="scss">
@@ -55,7 +57,8 @@ const openStaffEditDialog = ref(false)
   align-items: center;
   justify-content: center;
   .modal-content {
-    background: pink;
+    position: relative;
+    background: #fffcdc;
     width: 70%;
     height: 70%;
     padding: 20px;
@@ -63,6 +66,11 @@ const openStaffEditDialog = ref(false)
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .close-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
   }
 }
 </style>

@@ -28,7 +28,7 @@
         </td>
       </tr>
     </table>
-    <edit-modal :open="openStaffEditDialog"></edit-modal>
+    <edit-modal :open="openStaffEditDialog" :close="closeStaffEdit(false)"></edit-modal>
   </div>
 </template>
 
@@ -42,6 +42,9 @@ const openStaffEditDialog = ref(false)
 const openStaffEdit = () => {
   openStaffEditDialog.value = true
   console.log('確認', openStaffEditDialog.value)
+}
+const closeStaffEdit = () => {
+  openStaffEditDialog.value = false
 }
 
 interface Staff {
