@@ -28,7 +28,7 @@
         </td>
       </tr>
     </table>
-    <edit-modal :open="openStaffEditDialog" :close="closeStaffEdit(false)"></edit-modal>
+    <edit-modal v-model:staffEditModal="staffEditModal" />
   </div>
 </template>
 
@@ -38,14 +38,12 @@ import PrimaryButton from '../components/atoms/PrimaryButton.vue'
 import DangerButton from '../components/atoms/DangerButton.vue'
 import EditModal from '../components/molecules/EditModal.vue'
 
-const openStaffEditDialog = ref(false)
+const staffEditModal = ref(false)
 const openStaffEdit = () => {
-  openStaffEditDialog.value = true
-  console.log('確認', openStaffEditDialog.value)
+  staffEditModal.value = true
+  console.log('確認', staffEditModal.value)
 }
-const closeStaffEdit = () => {
-  openStaffEditDialog.value = false
-}
+
 
 interface Staff {
   id: number
@@ -95,6 +93,7 @@ const staffData: Staff[] = [
 ]
 
 const staffList = ref(staffData)
+
 </script>
 
 <style lang="scss">

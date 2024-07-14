@@ -1,7 +1,7 @@
 <template>
-  <div class="modal-wrap" v-if="open">
+  <div class="modal-wrap" v-if="staffEditModal">
     <div class="modal-content">
-      <p class="close-icon">✖️</p>
+      <button class="close-icon" @click="closeStaffEdit()">✖️</button>
       <form class="form-content" action="#">
         <div class="category-item">
           <label class="label-text">職員名</label>
@@ -30,16 +30,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
-  open: {
+  staffEditModal: {
     type: Boolean,
     required: true
   }
 })
-const openStaffEditDialog = ref(false)
-const closeStaffEditDialog = ref(false)
+
+const emit = defineEmits(['update: staffEditModal'])
+
+const closeStaffEdit = () => {
+  emit('update: staffEditModal')
+}
 </script>
 
 <style lang="scss">
