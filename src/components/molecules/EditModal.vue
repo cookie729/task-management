@@ -1,7 +1,7 @@
 <template>
   <div class="modal-wrap" v-if="staffEditModal">
     <div class="modal-content">
-      <button class="close-icon" @click="closeStaffEdit()">✖️</button>
+      <button class="close-icon" @click="closeStaffEdit">✖️</button>
       <form class="form-content" action="#">
         <div class="category-item">
           <label class="label-text">職員名</label>
@@ -32,18 +32,40 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
 
+// interface Props {
+//   staffEditModal: {
+//     type: Boolean
+//     required: true
+//   }
+// }
+
+// interface Emits {
+//   (event: 'staffEditModal', false)
+// }
+
+// defineProps<Props>()
+
+// const closeStaffEdit = (): void => {
+//   emit('staffEditModal')
+//   console.log('確認')
+// }
+
 const props = defineProps({
   staffEditModal: {
     type: Boolean,
     required: true
   }
 })
+const emit = defineEmits(['close-modal'])
 
-const emit = defineEmits(['update: staffEditModal'])
-
-const closeStaffEdit = () => {
-  emit('update: staffEditModal')
+const closeStaffEdit = (): void => {
+  emit('close-modal')
 }
+// const emit = defineEmits(['update: staffEditModal'])
+
+// const closeStaffEdit = () => {
+//   emit('update: staffEditModal')
+// }
 </script>
 
 <style lang="scss">

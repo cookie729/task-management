@@ -28,7 +28,7 @@
         </td>
       </tr>
     </table>
-    <edit-modal v-model:staffEditModal="staffEditModal" />
+    <edit-modal :staffEditModal="staffEditModal" @close-modal="closeStaffEdit" />
   </div>
 </template>
 
@@ -44,6 +44,9 @@ const openStaffEdit = () => {
   console.log('確認', staffEditModal.value)
 }
 
+const closeStaffEdit = () => {
+  staffEditModal.value = false
+}
 
 interface Staff {
   id: number
@@ -93,7 +96,6 @@ const staffData: Staff[] = [
 ]
 
 const staffList = ref(staffData)
-
 </script>
 
 <style lang="scss">
