@@ -28,7 +28,7 @@
         </td>
       </tr>
     </table>
-    <edit-modal :staffEditModal="staffEditModal" @close-modal="closeStaffEdit" />
+    <EditModal :staffEditModal="staffEditModal" @close-modal="closeStaffEdit" />
   </div>
 </template>
 
@@ -41,7 +41,6 @@ import EditModal from '../components/molecules/EditModal.vue'
 const staffEditModal = ref(false)
 const openStaffEdit = () => {
   staffEditModal.value = true
-  console.log('確認', staffEditModal.value)
 }
 
 const closeStaffEdit = () => {

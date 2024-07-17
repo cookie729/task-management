@@ -3,27 +3,7 @@
     <div class="modal-content">
       <button class="close-icon" @click="closeStaffEdit">✖️</button>
       <form class="form-content" action="#">
-        <div class="category-item">
-          <label class="label-text">職員名</label>
-          <input class="staff-form" type="text" required />
-          <div class="border"></div>
-        </div>
-        <div class="category-item">
-          <label class="label-text">部署名</label>
-          <input class="staff-form" type="text" required />
-          <div class="border"></div>
-        </div>
-        <div class="category-item">
-          <label class="label-text">役職名</label>
-          <input class="staff-form" type="text" required />
-          <div class="border"></div>
-        </div>
-        <div class="category-item">
-          <label class="label-text">入社日</label>
-          <input class="staff-form" type="text" required />
-          <div class="border"></div>
-        </div>
-        <PrimaryButton type="submit">職員追加</PrimaryButton>
+        <DangerButton type="submit" @click="addStaff">職員追加</DangerButton>
       </form>
     </div>
   </div>
@@ -31,7 +11,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
-import PrimaryButton from '../atoms/PrimaryButton.vue'
+import DangerButton from '../atoms/DangerButton.vue'
 
 interface Props {
   staffEditModal: {
