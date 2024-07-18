@@ -1,9 +1,9 @@
 <template>
-  <div class="modal-wrap" v-if="staffEditModal">
+  <div class="modal-wrap" v-if="staffDelete">
     <div class="modal-content">
-      <button class="close-icon" @click="closeStaffEdit">✖️</button>
+      <button class="close-icon" @click="closeDeleteModal">✖️</button>
       <form class="form-content" action="#">
-        <DangerButton type="submit" @click="addStaff">職員追加</DangerButton>
+        <danger-button type="submit" @click="addStaff">職員削除</danger-button>
       </form>
     </div>
   </div>
@@ -14,10 +14,7 @@ import { defineProps, defineEmits } from 'vue'
 import DangerButton from '../atoms/DangerButton.vue'
 
 interface Props {
-  staffEditModal: {
-    type: Boolean
-    required: true
-  }
+  staffDelete: Boolean
 }
 defineProps<Props>()
 
@@ -27,7 +24,7 @@ interface Emits {
 const emit = defineEmits<Emits>()
 // const emit = defineEmits(['close-modal'])
 
-const closeStaffEdit = (): void => {
+const closeDeleteModal = (): void => {
   emit('close-modal')
 }
 </script>

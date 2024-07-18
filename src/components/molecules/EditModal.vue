@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-wrap" v-if="staffEditModal">
+  <div class="modal-wrap" v-if="staffEdit">
     <div class="modal-content">
       <button class="close-icon" @click="closeStaffEdit">✖️</button>
       <form class="form-content" action="#">
@@ -34,10 +34,7 @@ import { defineProps, defineEmits } from 'vue'
 import PrimaryButton from '../atoms/PrimaryButton.vue'
 
 interface Props {
-  staffEditModal: {
-    type: Boolean
-    required: true
-  }
+  staffEdit: Boolean
 }
 defineProps<Props>()
 

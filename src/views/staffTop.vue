@@ -24,11 +24,12 @@
           >
             編集
           </primary-button>
-          <danger-button>削除</danger-button>
+          <danger-button @click="openStaffDelete">削除</danger-button>
         </td>
       </tr>
     </table>
-    <EditModal :staffEditModal="staffEditModal" @close-modal="closeStaffEdit" />
+    <edit-modal :staffEdit="staffEdit" @close-modal="closeStaffEdit" />
+    <delete-modal :staffDelete="staffDelete" @close-modal="closeStaffDelete" />
   </div>
 </template>
 
@@ -37,14 +38,24 @@ import { ref } from 'vue'
 import PrimaryButton from '../components/atoms/PrimaryButton.vue'
 import DangerButton from '../components/atoms/DangerButton.vue'
 import EditModal from '../components/molecules/EditModal.vue'
+import DeleteModal from '../components/molecules/DeleteModal.vue'
 
-const staffEditModal = ref(false)
+const staffEdit = ref(false)
+const staffDelete = ref(false)
 const openStaffEdit = () => {
-  staffEditModal.value = true
+  staffEdit.value = true
 }
 
 const closeStaffEdit = () => {
-  staffEditModal.value = false
+  staffEdit.value = false
+}
+
+const openStaffDelete = () => {
+  staffDelete.value = true
+}
+
+const closeStaffDelete = () => {
+  staffDelete.value = false
 }
 
 interface Staff {
