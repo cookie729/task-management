@@ -2,9 +2,18 @@
   <div class="modal-wrap" v-if="staffDelete">
     <div class="modal-content">
       <button class="close-icon" @click="closeDeleteModal">✖️</button>
-      <form class="form-content" action="#">
-        <danger-button type="submit" @click="addStaff">職員削除</danger-button>
-      </form>
+      <div class="vertical-row">
+        <slot>
+          <p class="cfm-text">
+            職員を削除します。 <br />
+            宜しいですか?
+          </p>
+        </slot>
+        <div class="btn-flex">
+          <cancel-button class="m-btn" type="submit" @click="delStaff">キャンセル</cancel-button>
+          <danger-button class="m-btn" type="submit" @click="delStaff">職員削除</danger-button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -12,6 +21,7 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
 import DangerButton from '../atoms/DangerButton.vue'
+import CancelButton from '../atoms/CancelButton.vue'
 
 interface Props {
   staffDelete: Boolean
@@ -19,13 +29,17 @@ interface Props {
 defineProps<Props>()
 
 interface Emits {
-  (event: 'close-modal'): void
+  (event: 'close-delete'): void
 }
 const emit = defineEmits<Emits>()
 // const emit = defineEmits(['close-modal'])
 
 const closeDeleteModal = (): void => {
-  emit('close-modal')
+  emit('close-delete')
+}
+
+const delStaff = (): void => {
+  emit('close-delete')
 }
 </script>
 
@@ -56,6 +70,24 @@ const closeDeleteModal = (): void => {
     align-items: center;
     justify-content: center;
     border-radius: 50px;
+  }
+  .vertical-row {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+  }
+  .cfm-text {
+    line-height: 2rem;
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+  .btn-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  .m-btn {
+    margin: 16px;
   }
   .close-icon {
     position: absolute;

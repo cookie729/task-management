@@ -39,13 +39,13 @@ interface Props {
 defineProps<Props>()
 
 interface Emits {
-  (event: 'close-modal'): void
+  (event: 'close-edit'): void
 }
 const emit = defineEmits<Emits>()
 // const emit = defineEmits(['close-modal'])
 
 const closeStaffEdit = (): void => {
-  emit('close-modal')
+  emit('close-edit')
 }
 </script>
 

@@ -28,8 +28,8 @@
         </td>
       </tr>
     </table>
-    <edit-modal :staffEdit="staffEdit" @close-modal="closeStaffEdit" />
-    <delete-modal :staffDelete="staffDelete" @close-modal="closeStaffDelete" />
+    <edit-modal :staffEdit="staffEdit" @close-edit="closeStaffEdit" />
+    <delete-modal :staffDelete="staffDelete" @close-delete="closeStaffDelete" />
   </div>
 </template>
 
