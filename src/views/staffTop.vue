@@ -15,7 +15,9 @@
         <td>{{ staff.id }}</td>
         <td>{{ staff.code }}</td>
         <td>{{ staff.name }}</td>
-        <td>{{ staff.department }}</td>
+        <td>{{ staff.department }}</td> 
+        <td>{{ staff.job }}</td>
+        <td>{{ staff.join_date }}</td> 
         <td class="d-flex">
           <primary-button
             backgroundColor="#009766"
@@ -28,7 +30,7 @@
         </td>
       </tr>
     </table>
-    <edit-modal :staffEdit="staffEdit" @close-edit="closeStaffEdit" />
+    <edit-modal :staffEdit="staffEdit" @close-edit="closeStaffEdit" :staffList="selectedStaff" />
     <delete-modal :staffDelete="staffDelete" @close-delete="closeStaffDelete" />
   </div>
 </template>
@@ -42,7 +44,10 @@ import DeleteModal from '../components/molecules/DeleteModal.vue'
 
 const staffEdit = ref(false)
 const staffDelete = ref(false)
-const openStaffEdit = () => {
+const selectedStaff = ref(null)
+
+const openStaffEdit = (staff) => {
+  selectedStaff.value = staff
   staffEdit.value = true
 }
 
@@ -63,6 +68,8 @@ interface Staff {
   name: string
   code: string
   department: string
+  job: string
+  join_date: string
   control: string
 }
 
@@ -71,6 +78,8 @@ const tableHeader = {
   code: '職員番号',
   name: '名前',
   department: '部署',
+  job: '役職',
+  join_date: '入社日',
   control: ''
 }
 
@@ -80,6 +89,8 @@ const staffData: Staff[] = [
     code: '001',
     name: 'test-name1',
     department: '経理',
+    job: '課長',
+    join_date: '2013-04-01',
     control: ''
   },
   {
@@ -87,6 +98,8 @@ const staffData: Staff[] = [
     code: '002',
     name: 'test-name2',
     department: '総務',
+    job: '係長',
+    join_date: '2015-04-01',
     control: ''
   },
   {
@@ -94,6 +107,8 @@ const staffData: Staff[] = [
     code: '003',
     name: 'test-name3',
     department: '設計',
+    job: '部長',
+    join_date: '2018-04-01',
     control: ''
   },
   {
@@ -101,6 +116,8 @@ const staffData: Staff[] = [
     code: '004',
     name: 'test-name4',
     department: '配送センター',
+    job: '社員',
+    join_date: '2020-04-01',
     control: ''
   }
 ]

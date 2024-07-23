@@ -2,25 +2,30 @@
   <div class="modal-wrap" v-if="staffEdit">
     <div class="modal-content">
       <button class="close-icon" @click="closeStaffEdit">✖️</button>
-      <form class="form-content" action="#">
+      <form class="form-content" v-for="(staff, key) in staffList" :key="key" action="#">
+        <div class="category-item">
+          <label class="label-text">職員番号</label>
+          <input class="staff-form" type="text" v-model="staff.code" required />
+          <div class="border"></div>
+        </div>
         <div class="category-item">
           <label class="label-text">職員名</label>
-          <input class="staff-form" type="text" required />
+          <input class="staff-form" type="text" v-model="staff.name" required />
           <div class="border"></div>
         </div>
         <div class="category-item">
           <label class="label-text">部署名</label>
-          <input class="staff-form" type="text" required />
+          <input class="staff-form" type="text" v-model="staff.department" required />
           <div class="border"></div>
         </div>
         <div class="category-item">
           <label class="label-text">役職名</label>
-          <input class="staff-form" type="text" required />
+          <input class="staff-form" type="text" v-model="staff.job" required />
           <div class="border"></div>
         </div>
         <div class="category-item">
           <label class="label-text">入社日</label>
-          <input class="staff-form" type="text" required />
+          <input class="staff-form" type="text" v-model="staff.join_date" required />
           <div class="border"></div>
         </div>
         <PrimaryButton type="submit">職員追加</PrimaryButton>
@@ -30,19 +35,31 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue'
+import { defineProps, defineEmits, watch } from 'vue'
 import PrimaryButton from '../atoms/PrimaryButton.vue'
 
-interface Props {
-  staffEdit: Boolean
-}
-defineProps<Props>()
+// interface Props {
+//   staffEdit: Boolean
+//   staffList: Array
+// }
+// defineProps<Props>()
 
-interface Emits {
-  (event: 'close-edit'): void
-}
-const emit = defineEmits<Emits>()
-// const emit = defineEmits(['close-modal'])
+const props = defineProps<{
+  staffEdit: boolean
+  staffList: {
+    id: number
+    name: string
+    code: string
+    department: string
+    control: string
+  } | null
+}>()
+
+// interface Emits {
+//   (event: 'close-edit'): void
+// }
+// const emit = defineEmits<Emits>()
+const emit = defineEmits(['close-modal'])
 
 const closeStaffEdit = (): void => {
   emit('close-edit')
