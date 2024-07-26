@@ -15,14 +15,14 @@
         <td>{{ staff.id }}</td>
         <td>{{ staff.code }}</td>
         <td>{{ staff.name }}</td>
-        <td>{{ staff.department }}</td> 
+        <td>{{ staff.department }}</td>
         <td>{{ staff.job }}</td>
-        <td>{{ staff.join_date }}</td> 
+        <td>{{ staff.join_date }}</td>
         <td class="d-flex">
           <primary-button
             backgroundColor="#009766"
             color="rgb(255, 255, 255)"
-            @click="openStaffEdit"
+            @click="() => openStaffEdit(staff)"
           >
             編集
           </primary-button>
@@ -30,7 +30,7 @@
         </td>
       </tr>
     </table>
-    <edit-modal :staffEdit="staffEdit" @close-edit="closeStaffEdit" :staffList="selectedStaff" />
+    <edit-modal :staffEdit="staffEdit" @close-edit="closeStaffEdit" :staff="selectedStaff" />
     <delete-modal :staffDelete="staffDelete" @close-delete="closeStaffDelete" />
   </div>
 </template>
@@ -44,7 +44,7 @@ import DeleteModal from '../components/molecules/DeleteModal.vue'
 
 const staffEdit = ref(false)
 const staffDelete = ref(false)
-const selectedStaff = ref(null)
+const selectedStaff = ref<Staff | null>(null)
 
 const openStaffEdit = (staff) => {
   selectedStaff.value = staff
@@ -121,7 +121,6 @@ const staffData: Staff[] = [
     control: ''
   }
 ]
-
 const staffList = ref(staffData)
 </script>
 

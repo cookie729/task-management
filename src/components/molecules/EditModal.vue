@@ -2,30 +2,30 @@
   <div class="modal-wrap" v-if="staffEdit">
     <div class="modal-content">
       <button class="close-icon" @click="closeStaffEdit">✖️</button>
-      <form class="form-content" v-for="(staff, key) in staffList" :key="key" action="#">
+      <form class="form-content" action="#">
         <div class="category-item">
           <label class="label-text">職員番号</label>
-          <input class="staff-form" type="text" v-model="staff.code" required />
+          <input class="staff-form" type="text" v-model="editStaff.code" required />
           <div class="border"></div>
         </div>
         <div class="category-item">
           <label class="label-text">職員名</label>
-          <input class="staff-form" type="text" v-model="staff.name" required />
+          <input class="staff-form" type="text" v-model="editStaff.name" required />
           <div class="border"></div>
         </div>
         <div class="category-item">
           <label class="label-text">部署名</label>
-          <input class="staff-form" type="text" v-model="staff.department" required />
+          <input class="staff-form" type="text" v-model="editStaff.department" required />
           <div class="border"></div>
         </div>
         <div class="category-item">
           <label class="label-text">役職名</label>
-          <input class="staff-form" type="text" v-model="staff.job" required />
+          <input class="staff-form" type="text" v-model="editStaff.job" required />
           <div class="border"></div>
         </div>
         <div class="category-item">
           <label class="label-text">入社日</label>
-          <input class="staff-form" type="text" v-model="staff.join_date" required />
+          <input class="staff-form" type="text" v-model="editStaff.join_date" required />
           <div class="border"></div>
         </div>
         <PrimaryButton type="submit">職員追加</PrimaryButton>
@@ -35,30 +35,25 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, watch } from 'vue'
+import { defineProps, defineEmits, onMounted } from 'vue'
 import PrimaryButton from '../atoms/PrimaryButton.vue'
 
-// interface Props {
-//   staffEdit: Boolean
-//   staffList: Array
-// }
-// defineProps<Props>()
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const props = defineProps<{
   staffEdit: boolean
-  staffList: {
+  staff: {
     id: number
-    name: string
     code: string
+    name: string
     department: string
+    job: string
+    join_date: string
     control: string
   } | null
 }>()
 
-// interface Emits {
-//   (event: 'close-edit'): void
-// }
-// const emit = defineEmits<Emits>()
+const editStaff = ref({ ...props.staff})
+
 const emit = defineEmits(['close-modal'])
 
 const closeStaffEdit = (): void => {
